@@ -16,7 +16,7 @@ export default function CreateEvent() {
     setLoading(true);
 
     try {
-      // 🟢 Insert event data into Supabase table (NO image)
+     
       const { error } = await supabase.from("events").insert([
         {
           owner: user.id,
