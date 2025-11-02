@@ -12,28 +12,11 @@ export default function CreateEvent() {
 
   const onSubmit = async (data) => {
     if (!user) return alert("Please log in first");
-    if (!data.image?.[0]) return alert("Please upload an image");
 
     setLoading(true);
 
     try {
-      // 1️⃣ Upload image to Supabase Storage
-      const file = data.image[0];
-      const fileName = `${Date.now()}_${file.name}`;
-      const { error: uploadError } = await supabase.storage
-        .from("event-images")
-        .upload(fileName, file);
-
-      if (uploadError) throw uploadError;
-
-      // 2️⃣ Get public URL
-      const { data: urlData } = supabase.storage
-        .from("event-images")
-        .getPublicUrl(fileName);
-
-      const image_url = urlData.publicUrl;
-
-      // 3️⃣ Insert event data into Supabase table
+      // 🟢 Insert event data into Supabase table (NO image)
       const { error } = await supabase.from("events").insert([
         {
           owner: user.id,
@@ -44,7 +27,6 @@ export default function CreateEvent() {
           end_time: data.end_time,
           capacity: data.capacity ? parseInt(data.capacity) : null,
           is_public: data.is_public || false,
-          image_url: image_url, // save the image URL
         },
       ]);
 
@@ -99,16 +81,7 @@ export default function CreateEvent() {
           className="w-full border p-2 rounded-md"
         />
 
-        {/* 🖼️ Image upload field */}
-        <label className="block">
-          <span className="text-gray-700">Event Image</span>
-          <input
-            type="file"
-            accept="image/*"
-            {...register("image")}
-            className="mt-1 w-full border p-2 rounded-md"
-          />
-        </label>
+        {/* ❌ Sawirka waa laga reebay */}
 
         <label className="flex items-center gap-2">
           <input type="checkbox" {...register("is_public")} />

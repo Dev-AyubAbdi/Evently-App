@@ -87,13 +87,7 @@ export default function EventDetail() {
           </button>
         </div>
         {/* add image  */}
-        {event.image_url && (
-          <img
-            src={event.image_url}
-            alt={event.title}
-            className="w-full h-64 object-cover rounded-xl mb-6"
-          />
-        )}
+        
       </div>
     </div>
   );
