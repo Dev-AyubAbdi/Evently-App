@@ -1,40 +1,32 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import Navbar from "./Components/navBar"
+import Footer from "./Components/Footer"
 import Home from "./Pages/Home"
-import CreateEvent  from "./Pages/CreateEvent"
-import EventPage  from "./Pages/EventPage"
-import AuthPage from "./Pages/Authpage"
-import { useAuth } from "./context/AuthContext";
+import CreateEvent from "./pages/CreateEvent";
+import EventDetail from "./pages/EventDetail";
+import Profile from "./pages/Profile";
+import Login from "./Pages/Login"
+import Signup from "./Pages/Signup"
+import NotFound from './Pages/NotFound'
 
 function App() {
-  const { user, signOut } = useAuth();
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="p-4 bg-white shadow flex justify-between">
-        <div className="flex gap-4">
-          <Link to="/" className="font-semibold text-green-600">Evently</Link>
-          <Link to="/create" className="hover:underline">Create</Link>
-        </div>
-        <div>
-          {user ? (
-            <button onClick={signOut} className="text-red-500">Logout</button>
-          ) : (
-            <Link to="/auth" className="text-green-600">Login</Link>
-          )}
-        </div>
-      </nav>
-
-      <div className="p-6">
+    <>
+      <Navbar />
+      <div className="pt-20 min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateEvent />} />
-          <Route path="/event/:id" element={<EventPage />} />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/event/:id" element={<EventDetail />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
-
-export default App
+export default App;
