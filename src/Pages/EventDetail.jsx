@@ -26,7 +26,9 @@ export default function EventDetail() {
   }, [id]);
 
   const handleDelete = async () => {
-    const confirmDelete = confirm("Are you sure you want to delete this event?");
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this event?"
+    );
     if (!confirmDelete) return;
 
     const { error } = await supabase.from("events").delete().eq("id", id);
@@ -61,7 +63,9 @@ export default function EventDetail() {
             className="w-full h-64 object-cover rounded-xl mb-6"
           />
         )}
-        <h1 className="text-3xl font-bold text-green-600 mb-2">{event.title}</h1>
+        <h1 className="text-3xl font-bold text-green-600 mb-2">
+          {event.title}
+        </h1>
         <p className="text-gray-700 mb-4">{event.description}</p>
         <div className="text-sm text-gray-600 mb-4">
           📍 <span className="font-medium">{event.location}</span> <br />
@@ -82,6 +86,14 @@ export default function EventDetail() {
             Delete
           </button>
         </div>
+        {/* add image  */}
+        {event.image_url && (
+          <img
+            src={event.image_url}
+            alt={event.title}
+            className="w-full h-64 object-cover rounded-xl mb-6"
+          />
+        )}
       </div>
     </div>
   );

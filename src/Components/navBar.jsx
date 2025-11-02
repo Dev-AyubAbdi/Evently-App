@@ -25,6 +25,7 @@ export default function Navbar() {
         <Link to="/" className="text-2xl font-bold text-green-600">Evently</Link>
         <div className="flex items-center gap-6">
           <Link to="/" className="text-gray-700 hover:text-green-600">Home</Link>
+            <Link to="/Events" className="text-gray-700 hover:text-green-600">Events</Link>
           {user && (
             <Link to="/create" className="text-gray-700 hover:text-green-600">Create</Link>
           )}
