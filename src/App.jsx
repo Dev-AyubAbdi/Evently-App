@@ -5,7 +5,7 @@ import Home from "./Pages/Home"
 import CreateEvent from "./Pages/CreateEvent";
 import Events from "./Pages/Events"
 import EventDetail from "./Pages/EventDetail";
-import Profile from "./pages/Profile";
+import Profile from "./Pages/Profile";
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
 import NotFound from './Pages/NotFound'
