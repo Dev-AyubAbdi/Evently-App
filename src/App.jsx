@@ -4,7 +4,7 @@ import Footer from "./Components/Footer"
 import Home from "./Pages/Home"
 import CreateEvent from "./Pages/CreateEvent";
 import Events from "./Pages/Events"
-import EventDetail from "./pages/EventDetail";
+import EventDetail from "./Pages/EventDetail";
 import Profile from "./pages/Profile";
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
